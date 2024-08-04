@@ -1,8 +1,8 @@
-
+//NewNode.js
 
 import React from 'react';
 import BaseNode from './BaseNode';
-import { Handle, Position } from 'reactflow';
+import { Position } from 'reactflow';
 
 export const NewNode1 = (props) => {
   const fields = [
@@ -15,5 +15,6 @@ export const NewNode1 = (props) => {
     { id: 'output', type: 'source', position: Position.Right },
   ];
 
-  return <BaseNode {...props} type="CustomNode1" fields={fields} handles={handles} />;
+  return <BaseNode {...props} type="newNode1" fields={fields} handles={handles} />;
 };
+

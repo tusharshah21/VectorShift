@@ -1,7 +1,7 @@
 // textNode.js
 import React from 'react';
 import BaseNode from './BaseNode';
-import { Handle, Position } from 'reactflow';
+import { Position } from 'reactflow';
 
 export const TextNode = (props) => {
   const fields = [

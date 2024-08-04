@@ -1,35 +1,31 @@
 // BaseNode.js
+import React from 'react';
+import { Handle } from 'reactflow';
 
-import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
-
-const BaseNode = ({ id, data, type, fields, handles }) => {
-  const [state, setState] = useState(
-    fields.reduce((acc, field) => {
-      acc[field.name] = data[field.dataKey] || field.defaultValue;
-      return acc;
-    }, {})
-  );
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  return (
-    <div style={{ width: 200, height: 80, border: '1px solid black' }}>
-      <div>
-        <span>{type}</span>
-      </div>
-      <div>
-        {fields.map((field) => (
-          <label key={field.name}>
-            {field.label}:
-            {field.type === 'select' ? (
+const BaseNode = ({ id, type, data, fields, handles }) => {
+  const renderFields = () => {
+    return fields.map((field) => {
+      if (field.type === 'text') {
+        return (
+          <div key={field.name}>
+            <label>
+              {field.label}:
+              <input
+                type="text"
+                value={data[field.dataKey] || field.defaultValue}
+                onChange={(e) => data[field.dataKey] = e.target.value}
+              />
+            </label>
+          </div>
+        );
+      } else if (field.type === 'select') {
+        return (
+          <div key={field.name}>
+            <label>
+              {field.label}:
               <select
-                name={field.name}
-                value={state[field.name]}
-                onChange={handleChange}
+                value={data[field.dataKey] || field.defaultValue}
+                onChange={(e) => data[field.dataKey] = e.target.value}
               >
                 {field.options.map((option) => (
                   <option key={option} value={option}>
@@ -37,24 +33,39 @@ const BaseNode = ({ id, data, type, fields, handles }) => {
                   </option>
                 ))}
               </select>
-            ) : (
+            </label>
+          </div>
+        );
+      } else if (field.type === 'file') {
+        return (
+          <div key={field.name}>
+            <label>
+              {field.label}:
               <input
-                type={field.type}
-                name={field.name}
-                value={state[field.name]}
-                onChange={handleChange}
+                type="file"
+                onChange={(e) => field.onChange(e)} // Pass the event to the handler
               />
-            )}
-          </label>
-        ))}
+              <span>{data[field.dataKey]}</span>
+            </label>
+          </div>
+        );
+      }
+      return null;
+    });
+  };
+
+  return (
+    <div style={{ width: 200, height: 80, border: '1px solid black' }}>
+      <div>
+        <span>{type}</span>
       </div>
+      <div>{renderFields()}</div>
       {handles.map((handle) => (
         <Handle
           key={handle.id}
           type={handle.type}
           position={handle.position}
           id={`${id}-${handle.id}`}
-          style={handle.style}
         />
       ))}
     </div>
