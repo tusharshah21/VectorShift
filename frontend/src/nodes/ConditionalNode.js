@@ -4,11 +4,7 @@ import { useState } from 'react';
 import BaseNode from './BaseNode';
 
 export const ConditionalNode = ({ id, data }) => {
-  const [condition, setCondition] = useState(data?.condition || 'if');
-
-  const handleConditionChange = (e) => {
-    setCondition(e.target.value);
-  };
+  const [condition] = useState(data?.condition || 'if');
 
   const fields = [
     {

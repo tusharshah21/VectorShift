@@ -88,9 +88,10 @@ export const PipelineUI = () => {
             addNode(newNode);
           }
         },
+        // eslint-disable-next-line
         [reactFlowInstance]
     );
-
+    
     const onDragOver = useCallback((event) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
