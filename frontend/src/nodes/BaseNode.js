@@ -1,13 +1,15 @@
 // BaseNode.js
+
 import React from 'react';
 import { Handle } from 'reactflow';
+import './style.css'; // Import the CSS file
 
 const BaseNode = ({ id, type, data, fields, handles }) => {
   const renderFields = () => {
     return fields.map((field) => {
       if (field.type === 'text') {
         return (
-          <div key={field.name}>
+          <div key={field.name} className="node-field">
             <label>
               {field.label}:
               <input
@@ -20,7 +22,7 @@ const BaseNode = ({ id, type, data, fields, handles }) => {
         );
       } else if (field.type === 'select') {
         return (
-          <div key={field.name}>
+          <div key={field.name} className="node-field">
             <label>
               {field.label}:
               <select
@@ -38,7 +40,7 @@ const BaseNode = ({ id, type, data, fields, handles }) => {
         );
       } else if (field.type === 'file') {
         return (
-          <div key={field.name}>
+          <div key={field.name} className="node-field">
             <label>
               {field.label}:
               <input
@@ -55,8 +57,8 @@ const BaseNode = ({ id, type, data, fields, handles }) => {
   };
 
   return (
-    <div style={{ width: 200, height: 80, border: '1px solid black' }}>
-      <div>
+    <div className="node-container">
+      <div className="node-header">
         <span>{type}</span>
       </div>
       <div>{renderFields()}</div>
@@ -66,6 +68,7 @@ const BaseNode = ({ id, type, data, fields, handles }) => {
           type={handle.type}
           position={handle.position}
           id={`${id}-${handle.id}`}
+          className="handle"
         />
       ))}
     </div>
