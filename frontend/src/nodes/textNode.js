@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Handle, Position } from 'reactflow';
-import BaseNode from './BaseNode';
 import './style.css'; // Import the existing stylesheet
 
 export const TextNode = ({ id, data, isConnectable }) => {

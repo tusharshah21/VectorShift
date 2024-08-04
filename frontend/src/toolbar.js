@@ -7,7 +7,6 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { CiFileOn } from "react-icons/ci";
 import { CiSettings } from "react-icons/ci";
 import { MdOutlineComment } from "react-icons/md";
-import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdLink } from "react-icons/io";
 import { GoArrowSwitch } from "react-icons/go";
 
