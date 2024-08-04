@@ -10,6 +10,8 @@ import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
+import { NewNode1 } from './nodes/NewNode1'; // Import new node
+
 
 import 'reactflow/dist/style.css';
 
@@ -20,6 +22,7 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  customNode1: NewNode1,
 };
 
 const selector = (state) => ({
