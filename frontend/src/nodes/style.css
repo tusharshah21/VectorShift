@@ -32,7 +32,7 @@
   
   .node-field {
     margin-bottom: 8px;
-    width: 100%;
+    /* width: 100%; */
   }
   
   .node-field label {
@@ -51,6 +51,7 @@
   
   .node-field input[type="file"] {
     padding: 0;
+    width: 100%;
   }
   
   .handle {
@@ -59,5 +60,40 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
+  }
+  
+  .node-container {
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff; /* Adjust background color as needed */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  .node-header {
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center; /* Center align the header text */
+    color: #333; /* Adjust header text color as needed */
+  }
+  
+  .node-textarea {
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Border for the textarea */
+    border-radius: 5px; /* Rounded corners for the textarea */
+    font-size: 14px; /* Adjust font size */
+    line-height: 1.5; /* Adjust line height */
+  }
+  
+  .node-handle {
+    background-color: #666; /* Handle color */
+    border: none; /* Remove border from handles */
+    border-radius: 50%; /* Make handles circular */
   }
   
